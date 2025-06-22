@@ -34,6 +34,12 @@
           </div>
           <button type="submit" class="w-full py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 transition">Se connecter</button>
         </form>
+        <div class="text-center mt-4">
+          <p class="text-gray-600 text-sm">
+            Pas encore de compte? 
+            <a href="{{ route('register') }}" class="text-blue-600 hover:text-blue-800 font-medium">S'inscrire</a>
+          </p>
+        </div>
       </div>
     </div>
     <div class="text-center mt-6 text-gray-500 text-sm">

@@ -8,10 +8,10 @@
 ## English
 
 ### Overview
-this app is a comprehensive absence management system built with Laravel framework. It provides educational institutions with tools to manage student attendance, track absences, generate reports, and maintain academic records efficiently.bsen
+This app is a comprehensive absence management system built with Laravel framework. It provides educational institutions with tools to manage student attendance, track absences, generate reports, and maintain academic records efficiently.
 
 ### Features
-- **User Authentication**: Secure login system with session management
+- **User Authentication**: Secure login and registration system with session management
 - **Student Management**: Add, edit, and delete student records
 - **Class Management**: Organize students into classes and programs
 - **Teacher Management**: Manage teacher information and assignments
@@ -48,13 +48,13 @@ this app is a comprehensive absence management system built with Laravel framewo
    composer install
    ```
 
-4. **Environment setup**
+3. **Environment setup**
    ```bash
    cp .env.example .env
    php artisan key:generate
    ```
 
-5. **Configure database**
+4. **Configure database**
    Edit `.env` file and set your database credentials:
    ```env
    DB_CONNECTION=mysql
@@ -65,25 +65,23 @@ this app is a comprehensive absence management system built with Laravel framewo
    DB_PASSWORD=your_password
    ```
 
-6. **Run migrations**
+5. **Run migrations**
    ```bash
    php artisan migrate
    ```
 
-7. **Create initial user**
-   Visit `/createUser` in your browser to create the first admin user.
-
-8. **Start the development server**
+6. **Start the development server**
    ```bash
    php artisan serve
    ```
 
 ### Usage
 
-#### Login
+#### Registration & Login
 - Access the application at `http://localhost:8000`
-- Use the credentials created via `/createUser` route
-- Default credentials: `anas123` / `anas123`
+- **New Users**: Visit `/register` to create a new account
+- **Existing Users**: Use `/login` to access the system
+- Registration requires: Full name, email, and password (minimum 6 characters)
 
 #### Dashboard
 The main dashboard provides access to all system modules:
@@ -131,6 +129,8 @@ The main dashboard provides access to all system modules:
 #### Authentication
 - `GET /login` - Login page
 - `POST /login` - Login attempt
+- `GET /register` - Registration page
+- `POST /register` - Registration attempt
 - `GET /logout` - Logout
 
 #### Resources (Protected by auth middleware)
@@ -149,10 +149,10 @@ The main dashboard provides access to all system modules:
 ## العربية
 
 ### نظرة عامة
-نظام إدارة الغياب ISTA-ABS هو نظام شامل لإدارة الغياب مبني على إطار عمل Laravel. يوفر للمؤسسات التعليمية أدوات لإدارة حضور الطلاب، وتتبع الغياب، وإنشاء التقارير، والحفاظ على السجلات الأكاديمية بكفاءة.
+هذا التطبيق هو نظام شامل لإدارة الغياب مبني على إطار عمل Laravel. يوفر للمؤسسات التعليمية أدوات لإدارة حضور الطلاب، وتتبع الغياب، وإنشاء التقارير، والحفاظ على السجلات الأكاديمية بكفاءة.
 
 ### المميزات
-- **المصادقة**: نظام تسجيل دخول آمن مع إدارة الجلسات
+- **المصادقة**: نظام تسجيل دخول وتسجيل مستخدمين آمن مع إدارة الجلسات
 - **إدارة الطلاب**: إضافة وتعديل وحذف سجلات الطلاب
 - **إدارة الفصول**: تنظيم الطلاب في فصول وبرامج
 - **إدارة المعلمين**: إدارة معلومات المعلمين وتعييناتهم
@@ -174,7 +174,6 @@ The main dashboard provides access to all system modules:
 #### المتطلبات الأساسية
 - PHP 8.2 أو أحدث
 - Composer
-- Node.js و NPM (لأصول الواجهة الأمامية)
 - قاعدة بيانات (MySQL, PostgreSQL, أو SQLite)
 
 #### تعليمات الإعداد
@@ -190,18 +189,13 @@ The main dashboard provides access to all system modules:
    composer install
    ```
 
-3. **تثبيت تبعيات Node.js**
-   ```bash
-   npm install
-   ```
-
-4. **إعداد البيئة**
+3. **إعداد البيئة**
    ```bash
    cp .env.example .env
    php artisan key:generate
    ```
 
-5. **تكوين قاعدة البيانات**
+4. **تكوين قاعدة البيانات**
    عدّل ملف `.env` وحدد بيانات قاعدة البيانات:
    ```env
    DB_CONNECTION=mysql
@@ -212,25 +206,23 @@ The main dashboard provides access to all system modules:
    DB_PASSWORD=كلمة_المرور
    ```
 
-6. **تشغيل الترحيلات**
+5. **تشغيل الترحيلات**
    ```bash
    php artisan migrate
    ```
 
-7. **إنشاء المستخدم الأول**
-   زر `/createUser` في المتصفح لإنشاء أول مستخدم مدير.
-
-8. **تشغيل خادم التطوير**
+6. **تشغيل خادم التطوير**
    ```bash
    php artisan serve
    ```
 
 ### الاستخدام
 
-#### تسجيل الدخول
+#### التسجيل وتسجيل الدخول
 - الوصول للتطبيق على `http://localhost:8000`
-- استخدم بيانات الاعتماد المنشأة عبر مسار `/createUser`
-- بيانات الاعتماد الافتراضية: `anas123` / `anas123`
+- **المستخدمون الجدد**: زر `/register` لإنشاء حساب جديد
+- **المستخدمون الحاليون**: استخدم `/login` للوصول للنظام
+- التسجيل يتطلب: الاسم الكامل، البريد الإلكتروني، وكلمة المرور (6 أحرف على الأقل)
 
 #### لوحة التحكم
 توفر لوحة التحكم الرئيسية الوصول لجميع وحدات النظام:
@@ -278,6 +270,8 @@ The main dashboard provides access to all system modules:
 #### المصادقة
 - `GET /login` - صفحة تسجيل الدخول
 - `POST /login` - محاولة تسجيل الدخول
+- `GET /register` - صفحة التسجيل
+- `POST /register` - محاولة التسجيل
 - `GET /logout` - تسجيل الخروج
 
 #### الموارد (محمية بواسطة middleware المصادقة)
