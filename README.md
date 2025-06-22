@@ -1,61 +1,293 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# ISTA-ABS - Absence Management System
+# نظام إدارة الغياب - ISTA-ABS
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[English](#english) | [العربية](#arabic)
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## English
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Overview
+this app is a comprehensive absence management system built with Laravel framework. It provides educational institutions with tools to manage student attendance, track absences, generate reports, and maintain academic records efficiently.bsen
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Features
+- **User Authentication**: Secure login system with session management
+- **Student Management**: Add, edit, and delete student records
+- **Class Management**: Organize students into classes and programs
+- **Teacher Management**: Manage teacher information and assignments
+- **Module Management**: Create and assign modules to classes
+- **Session Management**: Schedule and manage class sessions
+- **Absence Tracking**: Record and track student absences
+- **PDF Reports**: Generate attendance reports in PDF format
+- **Responsive Design**: Modern UI with Tailwind CSS
 
-## Learning Laravel
+### Technology Stack
+- **Backend**: Laravel 12.x (PHP 8.2+)
+- **Frontend**: Blade Templates, Tailwind CSS
+- **Database**: MySQL/PostgreSQL/SQLite
+- **PDF Generation**: DomPDF
+- **Authentication**: Laravel's built-in authentication
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Installation
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+#### Prerequisites
+- PHP 8.2 or higher
+- Composer
+- Database (MySQL, PostgreSQL, or SQLite)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+#### Setup Instructions
 
-## Laravel Sponsors
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd sys-gestion-absence
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+2. **Install PHP dependencies**
+   ```bash
+   composer install
+   ```
 
-### Premium Partners
+4. **Environment setup**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+5. **Configure database**
+   Edit `.env` file and set your database credentials:
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=system
+   DB_USERNAME=your_username
+   DB_PASSWORD=your_password
+   ```
 
-## Contributing
+6. **Run migrations**
+   ```bash
+   php artisan migrate
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+7. **Create initial user**
+   Visit `/createUser` in your browser to create the first admin user.
 
-## Code of Conduct
+8. **Start the development server**
+   ```bash
+   php artisan serve
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Usage
 
-## Security Vulnerabilities
+#### Login
+- Access the application at `http://localhost:8000`
+- Use the credentials created via `/createUser` route
+- Default credentials: `anas123` / `anas123`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+#### Dashboard
+The main dashboard provides access to all system modules:
+- **Students**: Manage student records
+- **Classes**: Organize students into classes
+- **Teachers**: Manage teacher information
+- **Modules**: Create and assign academic modules
+- **Sessions**: Schedule class sessions
+- **Absences**: Record and track attendance
 
-## License
+#### Recording Absences
+1. Navigate to Absences → Add Absence
+2. Select a class/group
+3. Choose the session date and time
+4. Mark students as present/absent
+5. Save the attendance record
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+#### Generating Reports
+- Access Sessions to view attendance records
+- Use the PDF download feature to generate attendance reports
+- Reports include student details, session information, and absence status
+
+### Database Structure
+
+#### Main Tables
+- **users**: System users and authentication
+- **filieres**: Academic programs/departments
+- **classes**: Student groups
+- **etudiants**: Student records
+- **enseignants**: Teacher records
+- **modules**: Academic modules
+- **seances**: Class sessions
+- **absences**: Attendance records
+
+#### Relationships
+- Students belong to Classes
+- Classes belong to Programs (Filières)
+- Modules are assigned to Classes
+- Teachers are assigned to Modules
+- Sessions are created for Modules
+- Absences are recorded for Students in Sessions
+
+### API Endpoints
+
+#### Authentication
+- `GET /login` - Login page
+- `POST /login` - Login attempt
+- `GET /logout` - Logout
+
+#### Resources (Protected by auth middleware)
+- `GET /` - Dashboard
+- `GET /filieres` - List programs
+- `GET /classes` - List classes
+- `GET /etudiants` - List students
+- `GET /enseignants` - List teachers
+- `GET /modules` - List modules
+- `GET /seances` - List sessions
+- `GET /absences` - List absences
+- `GET /seances/{id}/pdf` - Download session PDF
+
+---
+
+## العربية
+
+### نظرة عامة
+نظام إدارة الغياب ISTA-ABS هو نظام شامل لإدارة الغياب مبني على إطار عمل Laravel. يوفر للمؤسسات التعليمية أدوات لإدارة حضور الطلاب، وتتبع الغياب، وإنشاء التقارير، والحفاظ على السجلات الأكاديمية بكفاءة.
+
+### المميزات
+- **المصادقة**: نظام تسجيل دخول آمن مع إدارة الجلسات
+- **إدارة الطلاب**: إضافة وتعديل وحذف سجلات الطلاب
+- **إدارة الفصول**: تنظيم الطلاب في فصول وبرامج
+- **إدارة المعلمين**: إدارة معلومات المعلمين وتعييناتهم
+- **إدارة الوحدات**: إنشاء وتعيين الوحدات الأكاديمية للفصول
+- **إدارة الجلسات**: جدولة وإدارة جلسات الفصول
+- **تتبع الغياب**: تسجيل وتتبع غياب الطلاب
+- **تقارير PDF**: إنشاء تقارير الحضور بصيغة PDF
+- **تصميم متجاوب**: واجهة مستخدم حديثة مع Tailwind CSS
+
+### التقنيات المستخدمة
+- **الخلفية**: Laravel 12.x (PHP 8.2+)
+- **الواجهة الأمامية**: Blade Templates, Tailwind CSS
+- **قاعدة البيانات**: MySQL/PostgreSQL/SQLite
+- **إنشاء PDF**: DomPDF
+- **المصادقة**: نظام المصادقة المدمج في Laravel
+
+### التثبيت
+
+#### المتطلبات الأساسية
+- PHP 8.2 أو أحدث
+- Composer
+- Node.js و NPM (لأصول الواجهة الأمامية)
+- قاعدة بيانات (MySQL, PostgreSQL, أو SQLite)
+
+#### تعليمات الإعداد
+
+1. **استنساخ المستودع**
+   ```bash
+   git clone <repository-url>
+   cd sys-gestion-absence
+   ```
+
+2. **تثبيت تبعيات PHP**
+   ```bash
+   composer install
+   ```
+
+3. **تثبيت تبعيات Node.js**
+   ```bash
+   npm install
+   ```
+
+4. **إعداد البيئة**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+
+5. **تكوين قاعدة البيانات**
+   عدّل ملف `.env` وحدد بيانات قاعدة البيانات:
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=system
+   DB_USERNAME=اسم_المستخدم
+   DB_PASSWORD=كلمة_المرور
+   ```
+
+6. **تشغيل الترحيلات**
+   ```bash
+   php artisan migrate
+   ```
+
+7. **إنشاء المستخدم الأول**
+   زر `/createUser` في المتصفح لإنشاء أول مستخدم مدير.
+
+8. **تشغيل خادم التطوير**
+   ```bash
+   php artisan serve
+   ```
+
+### الاستخدام
+
+#### تسجيل الدخول
+- الوصول للتطبيق على `http://localhost:8000`
+- استخدم بيانات الاعتماد المنشأة عبر مسار `/createUser`
+- بيانات الاعتماد الافتراضية: `anas123` / `anas123`
+
+#### لوحة التحكم
+توفر لوحة التحكم الرئيسية الوصول لجميع وحدات النظام:
+- **الطلاب**: إدارة سجلات الطلاب
+- **الفصول**: تنظيم الطلاب في فصول
+- **المعلمون**: إدارة معلومات المعلمين
+- **الوحدات**: إنشاء وتعيين الوحدات الأكاديمية
+- **الجلسات**: جدولة جلسات الفصول
+- **الغياب**: تسجيل وتتبع الحضور
+
+#### تسجيل الغياب
+1. انتقل إلى الغياب → إضافة غياب
+2. اختر فصل/مجموعة
+3. اختر تاريخ ووقت الجلسة
+4. حدد الطلاب كحاضرين/غائبين
+5. احفظ سجل الحضور
+
+#### إنشاء التقارير
+- الوصول للجلسات لعرض سجلات الحضور
+- استخدم ميزة تحميل PDF لإنشاء تقارير الحضور
+- تتضمن التقارير تفاصيل الطلاب ومعلومات الجلسة وحالة الغياب
+
+### هيكل قاعدة البيانات
+
+#### الجداول الرئيسية
+- **users**: مستخدمي النظام والمصادقة
+- **filieres**: البرامج/الأقسام الأكاديمية
+- **classes**: مجموعات الطلاب
+- **etudiants**: سجلات الطلاب
+- **enseignants**: سجلات المعلمين
+- **modules**: الوحدات الأكاديمية
+- **seances**: جلسات الفصول
+- **absences**: سجلات الحضور
+
+#### العلاقات
+- الطلاب ينتمون للفصول
+- الفصول تنتمي للبرامج (Filières)
+- الوحدات تُخصص للفصول
+- المعلمون يُخصصون للوحدات
+- الجلسات تُنشأ للوحدات
+- الغياب يُسجل للطلاب في الجلسات
+
+### نقاط النهاية API
+
+#### المصادقة
+- `GET /login` - صفحة تسجيل الدخول
+- `POST /login` - محاولة تسجيل الدخول
+- `GET /logout` - تسجيل الخروج
+
+#### الموارد (محمية بواسطة middleware المصادقة)
+- `GET /` - لوحة التحكم
+- `GET /filieres` - قائمة البرامج
+- `GET /classes` - قائمة الفصول
+- `GET /etudiants` - قائمة الطلاب
+- `GET /enseignants` - قائمة المعلمين
+- `GET /modules` - قائمة الوحدات
+- `GET /seances` - قائمة الجلسات
+- `GET /absences` - قائمة الغياب
+- `GET /seances/{id}/pdf` - تحميل PDF الجلسة
+
