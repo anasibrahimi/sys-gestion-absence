@@ -47,18 +47,7 @@ class AbsenceController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'seanceDate' => 'required|date',
-            'seanceTime' => 'required|integer|between:1,4',
-            'module_id' => 'required|exists:modules,id_module',
-            'absences' => 'required|array|min:1',
-            'absences.*.étudiantId' => 'required|exists:étudiants,id_étudiant',
-            'absences.*.status' => 'boolean',
-        ], [
-            'absences.min' => 'Au moins un étudiant doit être sélectionné.',
-            'absences.required' => 'Veuillez sélectionner au moins un étudiant.',
-        ]);
-
+       
         // First, create and find the session
         $séance = Séance::firstOrCreate([
             'date' => $request->seanceDate,

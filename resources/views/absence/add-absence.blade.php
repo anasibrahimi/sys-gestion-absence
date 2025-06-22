@@ -87,7 +87,7 @@
                             <p class="text-lg">Aucun étudiant disponible</p>
                         @endif
                     </div>
-                    <a href="{{ route('filières.index') }}" class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600">
+                    <a href="{{ route('filieres.index') }}" class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600">
                         Retour à la sélection de classe
                     </a>
                 </div>

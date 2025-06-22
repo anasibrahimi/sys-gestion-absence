@@ -1,5 +1,5 @@
-# ISTA-ABS - Absence Management System
-# نظام إدارة الغياب - ISTA-ABS
+# Absence Management System
+# نظام إدارة الغياب 
 
 [English](#english) | [العربية](#arabic)
 
